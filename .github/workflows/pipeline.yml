@@ -33,4 +33,4 @@ jobs:
     - name: Build Docker image
       run: |
         echo 'Running build-image.sh script'
-        build-image.sh
+        ./build-image.sh
