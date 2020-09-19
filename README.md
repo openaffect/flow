@@ -3,7 +3,7 @@ Open Affect Flow is very simple application inspired by Stack Overflow, created 
 
 ## History
 
-### Version 1
+### Version 0.1.0
 
 Work log:
 
