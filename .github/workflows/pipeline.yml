@@ -1,0 +1,48 @@
+# This workflow is triggered for commits on master, and for commits on pull requests made on master
+
+name: build and publish Docker image
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: test
+      run: echo $GITHUB_ACTOR
+        
+    - uses: actions/checkout@v2
+      
+    - name: Setup JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+        
+    - uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-          
+
+    - name: Build with Maven
+      run: mvn clean package
+
+# For the next action to work, we need to configure a secret in the GitHub Repo, which
+# is possible in the web ui and via the CLI. The secret OPENAFFECT_PAT is the personal
+# access token of a user who has the right to publish into the GitHub Docker Registry
+# under /openaffect/flow
+
+    - name: Build Docker image (includes mvn clean package)
+      run: |
+          echo ${{ secrets.OPENAFFECT_PAT }}
+          echo ${{ secrets.OPENAFFECT_PAT }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
+          docker build -t open-affect/flow .
+          ./build-image.sh
+          docker tag open-affect/flow ghcr.io/openaffect/flow
+          docker push ghcr.io/openaffect/flow
+        
