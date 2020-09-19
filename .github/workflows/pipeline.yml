@@ -1,5 +1,4 @@
-# This workflow will build a Java project with Maven
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+# This workflow is triggered for commits on master, and for commits on pull requests made on master
 
 name: build and publish Docker image
 
@@ -32,6 +31,11 @@ jobs:
 
     - name: Build with Maven
       run: mvn clean package
+
+# For the next action to work, we need to configure a secret in the GitHub Repo, which
+# is possible in the web ui and via the CLI. The secret OPENAFFECT_PAT is the personal
+# access token of a user who has the right to publish into the GitHub Docker Registry
+# under /openaffect/flow
 
     - name: Build Docker image (includes mvn clean package)
       run: |
