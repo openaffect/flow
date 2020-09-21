@@ -1,0 +1,5 @@
+
+
+<<< Recorded commands on Sun Sep 20 2020 17:27:29 GMT+0200 (Central European Summer Time)
+I.fillField("form#newJoke textarea", "hello")
+I.fillField("form#newJoke #tfNewJoke", "a")
