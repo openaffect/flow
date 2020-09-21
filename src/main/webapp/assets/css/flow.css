@@ -1,8 +1,55 @@
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: purple;
     color: yellow;
     font-family: Helvetica;
+}
+
+.home-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.columns {
+    display: flex;
+    flex-direction: row;
+}
+
+.authoring {
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.authoring form {
+    display: flex;
+    flex-direction: column;
+}
+
+.authoring form * {
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.jokes {
+    flex-grow: 1;
+    margin-top: 2rem;
+    margin-right: 2rem;
+}
+
+.joke {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border: thin solid yellow;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
 }
