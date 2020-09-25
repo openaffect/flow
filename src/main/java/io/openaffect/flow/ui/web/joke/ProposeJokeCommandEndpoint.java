@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "SubmitJokeCommandHandler", urlPatterns = "/submitJoke.do")
+@WebServlet(name = "ProposeJokeCommandEndpoint", urlPatterns = "/submitJoke.do")
 public class ProposeJokeCommandEndpoint extends HttpServlet {
 
   private ServiceRegistry serviceRegistry = ServiceRegistry.getServiceRegistry();

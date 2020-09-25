@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "JokesPageHandler", urlPatterns = "/jokes")
-public class JokesQueryEndpoint extends HttpServlet {
+@WebServlet(name = "JokesPageEndpoint", urlPatterns = "/jokes")
+public class JokesPageEndpoint extends HttpServlet {
 
   private ServiceRegistry serviceRegistry;
   private JokeFacade jokeFacade;
