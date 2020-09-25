@@ -49,9 +49,26 @@ Open Affect Flow is very simple application inspired by Stack Overflow, created 
     * The second endpoint reacts to POST requests when users have filled the form and clicked on the submit button. The endpoint prepares a **command object**, invokes the facade and goes back to the Jokes page.
 * We also have **unit tests**, **one integration test** (which tests the collaboration between the facade and in-memory repository) and **one e2e test** (which tests the use case from the end user point of view).
 
-**WIth this version, we can:**
+**With this version, we can:**
 
 * Visit /jokes, write jokes and see them in a list.
 * Jokes are stored in an in-memory "data store" (i.e. a map)
 * Run an end-to-end test with CodeceptJS
+
+### Version 0.4.0
+
+**Work log:**
+
+* Introduced a Person entity in the domain, with a PersonId and a PersonRepository
+* Refactored the code to introduce an abstract InMemoryRepository (with Java generics), extended by the revised InMemoryJokeRepository and InMemoryPersonRepository
+* Deal with unique constraint on the username, with a unit test designed to validate concurrent behavior
+* Introduced an Identity Management facade, with a Register command and a Login command. Introduced exceptions.
+* Updated the e2e tests
+
+**WIth this version, we can:**
+
+* Register and login
+* Access /jokes only if we are logged in
+* Logout
+* Run end-to-end tests to validate this behavior
 

@@ -3,11 +3,11 @@ package io.openaffect.flow.domain;
 import java.util.Collection;
 import java.util.Optional;
 
-public interface IRepository<IEntity, Id> {
+public interface IRepository<ENTITY extends IEntity, ID extends Id> {
 
-  public void save(IEntity entity);
-  public void remove(Id id);
-  public Optional<IEntity> findById(Id id);
-  public Collection<IEntity> findAll();
+  public void save(ENTITY entity);
+  public void remove(ID id);
+  public Optional<ENTITY> findById(ID id);
+  public Collection<ENTITY> findAll();
 
 }
